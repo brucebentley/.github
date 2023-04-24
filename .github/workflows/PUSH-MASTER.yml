@@ -1,0 +1,35 @@
+name: Push to main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  labels:
+    name: Update repo labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Download labels' config
+        shell: bash
+        run: |
+          mkdir -p .tmp
+          curl -LsS https://raw.githubusercontent.com/brucebentley/.github/main/.github/labels.yml -o .tmp/labels.yml
+
+      - name: Update labels
+        uses: crazy-max/ghaction-github-labeler@v4.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .tmp/labels.yml
+
+  example:
+    name: Example
+    runs-on: ubuntu-latest
+    steps:
+      - name: Example
+        shell: bash
+        run: |
+          echo -e "\n[INFO] Example from ${{ github.ref }}"

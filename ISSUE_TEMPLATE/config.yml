@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Contributing details
+    url: https://github.com/brucebentley/.github/blob/main/CONTRIBUTING.md
+    about: Details about contributing rules
+  - name: Code of Conduct
+    url: https://github.com/brucebentley/.github/blob/main/CODE_OF_CONDUCT.md
+    about: Details about Code of Conduct
